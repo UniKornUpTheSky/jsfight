@@ -43,10 +43,12 @@ router.get('/', function (req, res, next) {
 
             }
             else {
+				console.log("User pass and confirmed are different");
                 fs.rf('./views/registration.html', res);
             }
         }
         else {
+			console.log("username and/or password not defined");
             fs.rf('./views/registration.html', res);
         }
     });

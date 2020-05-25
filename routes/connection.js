@@ -33,6 +33,7 @@ router.get('/', function (req, res, next) {
                         res.redirect('/');
                     }
                     else {
+						console.log("No user found with "+userEntry.name+" and "+userEntry.password);
                         fs.rf('./views/connection.html', res);
                     }
                 }
