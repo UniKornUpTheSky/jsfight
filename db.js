@@ -5,7 +5,7 @@ const mongoServer = require('mongodb');
 const mongo = {
     server: mongoServer,
     client: mongoServer.MongoClient,
-    url: 'mongodb://localhost:27017',
+    url: 'mongodb://heroku_qf1c4vcq:St0rmXr4ys@ds111066.mlab.com:11066/heroku_qf1c4vcq',
     db: {},
     objectId: mongoServer.ObjectId
 };
