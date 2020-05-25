@@ -18,7 +18,7 @@ module.exports = {
                 console.log('error while connecting to the database');
             }
             else {
-                mongo.db.JSFight = client.db('jsfight');
+                mongo.db.JSFight = client.db('heroku_qf1c4vcq');
                 console.log('connection achieved');
             }
         });
