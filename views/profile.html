@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>JSFight - Profile</title>
+</head>
+<body>
+    <div id="app" style="margin-top: 50px">
+
+        <h1 style="text-align: center">Your profile</h1>
+
+        <button class="btn btn-primary" style="margin-left: 20px" data-toggle="modal" data-target="#editPass">Edit Password</button>
+        <button @click="backToHome" class="btn btn-warning"><i style="color: white" class="fas fa-home"></i></button>
+
+        <div class="container-fluid" align="center">
+
+            <img src="./images/profile.png" style="margin-bottom: 50px">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Player Name : {{session.user.name}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Games played : {{session.user.played}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Games won : {{session.user.win}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Games lost : {{session.user.played - session.user.win}}</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Modal edit password -->
+        <div class="modal fade" id="editPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Password</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-danger alertPopup" role="alert" style="display: none">
+                            <strong>Hadouken!</strong><span class="alertMessage"></span>
+                        </div>
+
+                        <label for="oldPass">Old password : </label>
+                        <input type="password" class="form-control" name="oldPass" id="oldPass">
+
+                        <label for="newPass">New Password : </label>
+                        <input type="password" class="form-control" name="newPass" id="newPass">
+
+                        <label for="confirmPass">Confirm  : </label>
+                        <input type="password" class="form-control" name="confirmPass" id="confirmPass">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" v-on:click="verifNotEmpty">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal confirmation -->
+        <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#dc3545;">
+                        <h5 class="modal-title" id="">Warning /!\</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span>Are you sure to continue ?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-danger" v-on:click="editPass">Yes</input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/js/profile.js"></script>
+</html>

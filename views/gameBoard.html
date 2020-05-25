@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>JSFight - GameBoard</title>
+
+</head>
+<body style="background-color: #EBECEC">
+    <div id="app">
+
+        <div class="container text-center">
+            <img src="../images/logo.png" alt="jsfight" height="25%" width="25%">
+        </div>
+
+        <!--<h1 style="text-align: center">JSFight</h1>-->
+
+        <!-- Life bar -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 border">
+                    <label class="text-center">{{session.playerone.name}} || ATK SPE : <span class="specialPlayer" data-specialPlayer="0">0</span>%<span
+                            class="alertSpePlayer" style="color: red; display: none">You can't use ATK SPE until power is
+                    under 100% !</span></label>
+                    <div class="progress" style="transform: rotate(180deg)">
+                        <div class="progress-bar player bg-success" role="progressbar" data-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width:100% ; background-color: green"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4 border">
+                    <label class="text-center">{{session.playertwo.name}} || ATK SPE : <span class="specialOp" data-specialPlayer="0">0</span>%<span
+                            class="alertSpeOp" style="color: red; display: none">You can't use ATK SPE until power is
+                    under 100% !</span></label>
+                    <div class="progress">
+                        <div class="progress-bar oponent bg-success" role="progressbar" data-valuenow=""  aria-valuemin="0" aria-valuemax="100" style="width:100% ; background-color: green; transform: rotate(180deg);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2%"></div>
+
+        <!-- GameBoard -->
+
+        <div class="container-fluid">
+            <div style="background-color: grey; height: 500px; width: 100%"  class="board">
+                <canvas id="myCanvas" style="border:1px solid #d3d3d3; width: 100% ; height: 100%">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
+            </div>
+        </div>
+
+        <!-- tchat
+        <div class="container-fluid">
+            <div class="row">
+                <div style="background-color: white; height: 80px;width: 100px; border: black; border-style: solid" class="col-md-12 tchat"></div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="text" style="width: 100%">
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <button>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+
+    <!-- Controls -->
+    <div class="container-fluid" align="center" style="margin-top: 10px;" >
+
+        <div class="row" style="margin-left: 250px">
+            <div class="col-md-3">
+                <table border="1" style="background-color: white">
+                    <tr>
+                        <td>Z</td>
+                        <td>Kick</td>
+                    </tr>
+                    <tr>
+                        <td>Q</td>
+                        <td>Left</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>Crouch</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>Right</td>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>Punch</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>Special-Attack</td>
+                    </tr>
+                    <tr>
+                        <td>SPACE</td>
+                        <td>Jump</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-3">
+                <span> : Player 1 <-- Controls --> Player 2 : </span>
+            </div>
+
+            <div class="col-md-3">
+                <table border="1" style="background-color: white">
+                    <tr>
+                        <td>O</td>
+                        <td>Kick</td>
+                    </tr>
+                    <tr>
+                        <td>K</td>
+                        <td>Left</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>Crouch</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>Right</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td>Punch</td>
+                    </tr>
+                    <tr>
+                        <td>P</td>
+                        <td>Special-Attack</td>
+                    </tr>
+                    <tr>
+                        <td>SHIFT</td>
+                        <td>Jump</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal win -->
+    <div class="modal fade" id="endGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h2 class="modal-title" id="" style="color: white">Win !</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span class="winMessage"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success endGameButton" @click="endgame">Go back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/js/game.js"></script>
+</html>

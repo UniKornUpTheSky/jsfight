@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>JSFight - Connection</title>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: lightgrey">
+    <div id="app">
+        <div class="container-fluid" align="center" style="margin-top: 8%">
+            <div v-if="session.user">
+                <p id="user">Vous êtes connecté avec l'utilisateur {{session.user.name}}, </p><a href="/disconnection">Se déconnecter</a> | <a href="/">Menu Principal</a>
+            </div>
+            <div v-else>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="./images/logo.png" alt="">
+                    </div>
+                </div>
+                <form action="/connection" method="post">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="username">Username : </label>
+                            <input class="form-control" style="width: 200px" id="username" type="text" name="name" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="password">Password : </label>
+                            <input class="form-control" style="width: 200px" id="password" type="password" name="password" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success" value="Connection">
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <span>Not belong to us ? <a href="/registration">Register</a> NOW ! </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./js/connection.js"></script>
+</html>

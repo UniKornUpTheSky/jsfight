@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <title>JSFight - Lobby</title>
+</head>
+<body style="background-color: #EBECEC">
+<div id="app">
+ <div class="content" style="margin-top: 10%">
+
+     <h1 style="text-align: center"><i class="fas fa-hand-paper fa-3x" style="text-align: center; color: #dc3545"></i> Wait...</h1>
+
+     <div class="container-fluid" align="center" style="">
+         <p>Welcome to the lobby, wait to play with an other player</p>
+         <p>If any player is not found after <strong style="color: #dc3545">5min</strong> you will be redirect to the main room and try again :)</p>
+
+         <i class="fas fa-7x fa-circle-notch fa-spin" style="color: #29bddc"></i><br/>
+
+
+
+     </div>
+ </div>
+
+
+    <!-- Modal no player found -->
+    <div class="modal fade" id="noPlayerFound" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="alert alert-danger alertPopup" role="alert" >
+                        <strong>Hadouken!</strong><span> No player found, redirect to main room</span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger mainRoom" @click="toMain">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal player found -->
+    <div class="modal fade" id="playerFound" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Finish Him</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="alert alert-success alertPopup" role="alert" >
+                        <strong>Hadouken!</strong><span> A player founded to fight against you, good luck ;)</span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success fightRoom" @click="toFight" >Fight</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/lobby.js"></script>
+</html>

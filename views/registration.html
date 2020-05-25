@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html>
+<head>
+    <title>JSFight - Registration</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: lightgrey">
+    <div id="app">
+
+
+        <div class="container-fluid" align="center" style="margin-top: 8%">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="./images/register.png" alt="">
+                </div>
+            </div>
+
+            <form action="/registration" method="post">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="username">Username : </label>
+                        <input class="form-control" style="width: 200px" id="username" type="text" name="name" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="password">Password : </label>
+                        <input class="form-control" style="width: 200px" id="password" type="password" name="password" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="confirm">Confirmation : </label>
+                        <input class="form-control" style="width: 200px" id="confirm" type="password" name="confirm" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-success" value="Register"><br/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-md-12">
+                        <span>Back to <a href="/">login</a> page</span>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./js/registration.js"></script>
+<script>
+
+</script>
+</html>
