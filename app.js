@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('./db');
 const fs = require('./fs');
+const dotenv = require('dotenv').config()
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');

@@ -12,7 +12,7 @@ const mongo = {
 
 module.exports = {
     connection : function() {
-        mongo.client.connect(mongo.url, {useNewUrlParser : true} , function(err, client) {
+        mongo.client.connect(process.env.MONGODB_URI || mongo.url, {useNewUrlParser : true} , function(err, client) {
             if(err) {
                 mongo.db.JSFight = false;
                 console.log('error while connecting to the database');
