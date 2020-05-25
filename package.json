@@ -1,4 +1,7 @@
 {
+  "engines" : { 
+    "node" : ">=0.12" 
+  }
   "name": "jsfight",
   "version": "1.0.0",
   "description": "Street Stick Fighter",
